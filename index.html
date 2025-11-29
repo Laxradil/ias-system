@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Digital Shield</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <div class="logo">
+        <!-- Logo placeholder: replace `logo-placeholder.svg` with your own file.
+             Put your logo file in the same folder and keep the filename or update the `src` here.
+             You can adjust sizes via CSS variables in `styles.css`, via `data-width`/`data-height` attributes below,
+             or programmatically using the `setLogoSize(id,w,h)` helper available on `window`.
+        -->
+        <img id="site-logo" src="logo without logo.png" alt="The Digital Shield logo" data-width="48" data-height="48">
+        <span class="brand">THE DIGITAL SHIELD</span>
+      </div>
+      <nav class="main-nav" role="navigation" aria-label="Main">
+        <ul>
+          <li class="nav-item active" data-tab="home">HOMEPAGE</li>
+          <li class="nav-item" data-tab="gallery">PHISHBAIT GALLERY</li>
+          <li class="nav-item" data-tab="comparison">COMPARISON</li>
+          <li class="nav-item" data-tab="tips">TIPS</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-left">
+        <!-- Use the same logo file for the large hero image. By default this points to the same
+             `logo-placeholder.svg`. You may replace the file or update the `src` here. -->
+        <img id="hero-logo" src="logo.png" alt="The Digital Shield large logo" data-width="320" data-height="320">
+        
+      </div>
+
+      <div class="hero-right">
+        <div id="tab-content">
+          <div class="tab-panel" id="home">
+            <h1 class="sr">The Digital Shield</h1>
+            <p>
+              The Digital Shield is your first line of defense against the growing world of online deception. Every day, thousands fall victim to phishing emails, fake websites, and digital scams that look more convincing than ever. This platform was created to help you recognize these threats before they reach you.
+            </p>
+            <p>
+              Through real examples, side-by-side comparisons, and clear explanations, The Digital Shield trains your eye to spot red flags quickly. You'll learn how scammers manipulate design, tone, and urgency to trick their victims. More importantly, you'll understand the simple habits that keep you safe online.
+            </p>
+            <p>
+              Whether you're a student, employee, or casual internet user, this guide empowers you to browse with confidence. Stay alert, stay informed, and let The Digital Shield protect you from digital dangers.
+            </p>
+          </div>
+
+          <div class="tab-panel hidden" id="gallery">
+            <section class="gallery-hero">
+              <div class="gallery-text">
+                <h1 class="gallery-title">SPOT THE BAIT:</h1>
+                <h3 class="gallery-sub">A Gallery of Phising Email Examples</h3>
+                <p class="gallery-desc">Learn to identify common phishing tactics and protect yourself from scams.</p>
+                <a class="cta" href="#">EXPLORE EMAIL CATEGORIES</a>
+              </div>
+
+              <div class="gallery-art">
+                <img id="gallery-image" src="magnifiying glass.png" alt="Phishbait gallery artwork" data-width="360" data-height="320">
+                <!-- magnifier overlay -->
+                <svg class="magnifier" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="mgrad2" x1="0" x2="1">
+                      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+                      <stop offset="1" stop-color="#cfe9ff" stop-opacity="0.9"/>
+                    </linearGradient>
+                  </defs>
+                  <circle cx="28" cy="28" r="20" fill="url(#mgrad2)" stroke="#fff" stroke-opacity="0.5"/>
+                  <rect x="40" y="40" width="18" height="6" rx="2" transform="rotate(45 49 43)" fill="#cfd9ff" opacity="0.95"/>
+                </svg>
+              </div>
+            </section>
+            <nav class="gallery-tabs" aria-label="Gallery categories">
+              <ul>
+                <li class="gtab active" data-cat-index="0">Fake Bank Emails</li>
+                <li class="gtab" data-cat-index="1">Password Expiration Scams</li>
+                <li class="gtab" data-cat-index="2">Job/Scholarship Offers</li>
+                <li class="gtab" data-cat-index="3">Fake prize giveaway</li>
+              </ul>
+            </nav>
+
+            <div class="gallery-content">
+              <div class="category-panel" data-cat-index="0">
+                <div class="grid">
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="Fake bank 1">
+                      <div class="caption">THIS IS A FAKE “BDO TRANSACTION AUTHORIZATION” EMAIL</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="Fake bank 2">
+                      <div class="caption">UNION BANK PHISHING EXAMPLE</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="Fake bank 3">
+                      <div class="caption">LAND BANK ALERT EXAMPLE</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="Fake bank 4">
+                      <div class="caption">BANK OF COMMERCE SCAM ALERT</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="category-panel hidden" data-cat-index="1">
+                <div class="grid">
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="pwd1">
+                      <div class="caption">PASSWORD EXPIRATION NOTIFICATION</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="pwd2">
+                      <div class="caption">PASSWORD EXPIRATION - AUTHENTICATION SERVICE</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="pwd3">
+                      <div class="caption">PASSWORD EXPIRED - OUTLOOK VALIDATION</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="pwd4">
+                      <div class="caption">PASSWORD EXPIRATION NOTICE</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="category-panel hidden" data-cat-index="2">
+                <div class="grid">
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="scholar1">
+                      <div class="caption">PUBLIC ADVISORY — Scholarship Scam Example</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="scholar2">
+                      <div class="caption">STUDENT INTERNSHIP OPPORTUNITY — Bill Gates Foundation</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="scholar3">
+                      <div class="caption">NEW SCHOLARSHIP OPPORTUNITY — $3,000 per semester</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="scholar4">
+                      <div class="caption">FAKE JOB/INTERNSHIP OFFER — Personal Assistant</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="category-panel hidden" data-cat-index="3">
+                <div class="grid">
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="prize1">
+                      <div class="caption">CONGRATULATIONS — You have won an iPhone 15 (scam)</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="prize2">
+                      <div class="caption">STUDENT INTERNSHIP — Invitation (fake)</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="prize3">
+                      <div class="caption">SURVEY PRIZE — Win a Samsung / iPhone (scam)</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+
+                  <div class="example-card">
+                    <div class="card-inner">
+                      <img src="gallery-placeholder.svg" alt="prize4">
+                      <div class="caption">GIVEAWAY — MacBook / Excessive Prizes (fake)</div>
+                    </div>
+                    <button class="view-btn">VIEW DETAILS</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel hidden" id="comparison">
+            <h2>Side-by-Side Comparison</h2>
+            <p>Compare legitimate pages with phishing copies to spot subtle differences in design, URLs, and calls-to-action.</p>
+            <div class="comparison">
+              <div class="box">Legit</div>
+              <div class="box">Phish</div>
+            </div>
+          </div>
+
+          <div class="tab-panel hidden" id="tips">
+            <h2>Tips</h2>
+            <ul>
+              <li>Check the URL carefully and hover over links.</li>
+              <li>Look for poor grammar or odd urgency language.</li>
+              <li>Verify sender addresses and contact the organization directly.</li>
+              <li>Enable two-factor authentication where possible.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Logo controls UI (collapsible) -->
+  <div id="logo-controls" class="logo-controls" aria-hidden="false">
+    <button id="lc-toggle" class="lc-toggle" aria-expanded="true">Logo Controls ▾</button>
+    <div class="lc-panel">
+      <form id="lc-form">
+        <fieldset>
+          <legend>Header Logo</legend>
+          <label>Width: <input type="text" id="site-w" placeholder="e.g. 48 or 48px"></label>
+          <label>Height: <input type="text" id="site-h" placeholder="e.g. 48 or 48px"></label>
+        </fieldset>
+        <fieldset>
+          <legend>Hero Logo</legend>
+          <label>Width: <input type="text" id="hero-w" placeholder="e.g. 320 or 40vw"></label>
+          <label>Height: <input type="text" id="hero-h" placeholder="e.g. 320 or 320px"></label>
+        </fieldset>
+        <div class="lc-actions">
+          <button type="button" id="lc-apply">Apply</button>
+          <button type="button" id="lc-reset">Reset</button>
+        </div>
+      </form>
+      <div class="lc-note">Tip: values without units are treated as pixels. Use CSS units like <code>vw</code> if needed.</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

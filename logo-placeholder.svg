@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="pgrad" x1="0" x2="1">
+      <stop offset="0" stop-color="#10c3ff"/>
+      <stop offset="1" stop-color="#4b2bff"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="16" fill="url(#pgrad)"/>
+  <g transform="translate(12,14) scale(0.8)" fill="#fff">
+    <path d="M46 4 L86 18 V46 C86 74 66 96 46 104 C26 96 6 74 6 46 V18 Z" opacity="0.95"/>
+    <circle cx="38" cy="48" r="10" fill="#fff"/>
+  </g>
+  <text x="60" y="106" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">logo-placeholder.svg</text>
+</svg>

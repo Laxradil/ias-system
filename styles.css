@@ -1,0 +1,151 @@
+/* styles.css - recreate screenshot look */
+:root{
+  --bg1:#0e0b2b;
+  --bg2:#2d1b8f;
+  --accent1:#00d1ff;
+  --accent2:#4b2bff;
+  --container-width:1100px;
+  /* Logo sizing defaults (can be overridden) */
+  --site-logo-width:300px;
+  --site-logo-height:300px;
+  --hero-logo-width:420px;
+  --hero-logo-height:420px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;color:#e9eef8}
+body{
+  background: linear-gradient(90deg,var(--bg1),var(--bg2));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.container{max-width:var(--container-width);margin:0 auto;padding:30px}
+.site-header{padding:18px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px}
+.logo svg{display:block}
+.brand{font-weight:700;letter-spacing:1px;color:#bfe9ff}
+.logo img#site-logo{width:var(--site-logo-width);height:var(--site-logo-height);display:block;object-fit:contain}
+.logo img#site-logo[alt]{border-radius:6px}
+/* hero logo */
+.hero-left img#hero-logo{width:var(--hero-logo-width);height:var(--hero-logo-height);display:block;object-fit:contain}
+.hero-left img#hero-logo[alt]{border-radius:8px}
+.main-nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0}
+.main-nav .nav-item{cursor:pointer;padding:8px 6px;color:#c9d6ff;opacity:0.85}
+.main-nav .nav-item.active{font-weight:700;color:#fff;border-bottom:3px solid rgba(255,255,255,0.12);padding-bottom:5px}
+.main-nav .nav-item:hover{opacity:1}
+
+.hero{display:flex;gap:40px;align-items:center;padding:40px 0}
+.hero-left{flex:0 0 360px;display:flex;flex-direction:column;align-items:center}
+/* hide the left column (hero logo) except when hero has the home-mode class */
+.hero:not(.home-mode) .hero-left{display:none}
+.hero.gallery-mode .hero-left{flex:0 0 560px;align-items:flex-start;padding-left:40px}
+.hero.gallery-mode .hero-right{padding-right:40px}
+.big-shield{width:100%;max-width:320px}
+.logo-large-text{margin-top:18px;color:#fff;font-weight:800;letter-spacing:1px}
+.hero-right{flex:1;color:#dfe9ff}
+.hero-right p{line-height:1.6;color:#d9e6ff}
+/* gallery mode: swap sides so image appears on the right and text on the left */
+.hero.gallery-mode{flex-direction:row-reverse}
+.gallery-hero-content{max-width:560px}
+.gallery-title{font-size:86px;margin:0 0 8px;line-height:0.9;color:transparent;background:linear-gradient(90deg,#b9f6e8,#b6c7ff);-webkit-background-clip:text;background-clip:text;letter-spacing:2px}
+.gallery-sub{font-style:italic;margin:6px 0 18px;color:#bfe9ff;font-size:20px}
+.gallery-desc{margin:0 0 28px;color:#d9e6ff;font-size:18px;max-width:520px}
+.cta{display:inline-block;padding:16px 28px;border-radius:34px;background:linear-gradient(180deg,#3b66b3,#22427a);color:#fff;text-decoration:none;font-weight:700;letter-spacing:1px}
+.tab-panel h2{margin-top:0}
+.hidden{display:none}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+.card{background:rgba(255,255,255,0.03);padding:28px;border-radius:8px;text-align:center;color:#e6f0ff}
+.comparison{display:flex;gap:12px;margin-top:12px}
+.box{flex:1;background:rgba(255,255,255,0.03);padding:24px;border-radius:8px}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero{flex-direction:column}
+  .hero-left{flex:0 0 auto}
+  .logo-large-text{display:none}
+  .container{padding:20px}
+  .main-nav ul{gap:12px}
+}
+
+/* small helper */
+.sr{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+
+/* Logo controls panel */
+.logo-controls{position:fixed;right:18px;bottom:18px;width:300px;background:rgba(7,8,22,0.9);border:1px solid rgba(255,255,255,0.06);border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.5);color:#e8f4ff;font-size:13px;z-index:90}
+.logo-controls .lc-toggle{display:block;width:100%;background:transparent;border:none;padding:10px 12px;color:inherit;text-align:left;font-weight:600;cursor:pointer;border-radius:8px}
+.logo-controls .lc-panel{padding:8px 12px 12px}
+.logo-controls.collapsed .lc-panel{display:none}
+.logo-controls fieldset{border:1px solid rgba(255,255,255,0.03);padding:8px;border-radius:6px;margin:8px 0}
+.logo-controls legend{font-size:12px;padding:0 6px}
+.logo-controls label{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px}
+.logo-controls input[type="text"]{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);color:#e9f6ff;padding:6px 8px;border-radius:6px;width:120px}
+.logo-controls .lc-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
+.logo-controls button{background:linear-gradient(180deg,#2b2b68,#1b1b45);color:#fff;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:6px;cursor:pointer}
+.logo-controls .lc-note{font-size:11px;opacity:0.9;margin-top:8px;color:#bcd9ff}
+
+@media (max-width:700px){
+  .logo-controls{right:12px;left:12px;width:auto}
+}
+
+/* gallery artwork styles */
+.gallery-art{position:relative;display:block}
+.gallery-art img#gallery-image{width:var(--gallery-image-width);height:var(--gallery-image-height);object-fit:cover;border-radius:8px;display:block}
+.gallery-art .magnifier{position:absolute;right:-36px;top:-36px;width:190px;height:190px;filter:drop-shadow(0 10px 28px rgba(0,0,0,0.55));opacity:0.98}
+.hero.gallery-mode .gallery-art img#gallery-image{ /* make image respond to hero layout */
+  max-width:var(--gallery-image-width);
+}
+
+/* responsive tweaks for gallery hero */
+@media (max-width:1100px){
+  .gallery-title{font-size:56px}
+  .gallery-sub{font-size:18px}
+  .gallery-art .magnifier{width:140px;height:140px;right:-20px;top:-20px}
+}
+@media (max-width:900px){
+  .hero.gallery-mode{flex-direction:column}
+  .gallery-art{margin-top:18px}
+  .gallery-title{font-size:40px}
+}
+
+/* Gallery-specific rules (content inside the gallery tab) */
+.gallery-hero{display:flex;align-items:center;gap:40px;padding:40px 0}
+.gallery-text{flex:1;max-width:620px}
+.gallery-hero .cta{margin-top:18px}
+.gallery-art{flex:0 0 auto}
+
+/* Center gallery layout for the PHISHBAIT GALLERY tab */
+.tab-panel#gallery .gallery-hero{justify-content:center;text-align:center}
+.tab-panel#gallery .gallery-text{max-width:700px;margin:0 auto;text-align:center}
+.tab-panel#gallery .gallery-art{display:flex;justify-content:center}
+.gallery-tabs ul{display:flex;gap:40px;list-style:none;padding:0;margin:0;justify-content:center}
+.gallery-content{margin-top:36px;display:block}
+.gallery-content .category-panel{padding:20px 0;text-align:center}
+.gallery-content .category-panel.hidden{display:none}
+.gallery-content .grid{max-width:980px;margin:0 auto;grid-template-columns:repeat(2,1fr);gap:28px}
+
+.gallery-tabs{margin-top:40px;padding-top:30px;border-top:1px solid rgba(255,255,255,0.03)}
+.gallery-tabs ul{display:flex;gap:40px;list-style:none;padding:0;margin:0}
+.gallery-tabs .gtab{cursor:pointer;color:#eaf3ff;padding-bottom:12px;position:relative}
+.gallery-tabs .gtab.active{font-weight:700}
+.gallery-tabs .gtab.active:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:#ffffff;border-radius:2px}
+
+@media (max-width:900px){
+  .gallery-hero{flex-direction:column}
+  .gallery-art{order:2}
+  .gallery-text{order:1}
+}
+
+/* gallery content and example cards */
+.gallery-content{margin-top:36px}
+.category-panel{padding:20px 0}
+.example-card{background:linear-gradient(180deg,#ffffff,#f7f9ff);border-radius:12px;padding:12px;text-align:center;box-shadow:0 12px 30px rgba(5,7,20,0.45)}
+.example-card .card-inner{background:#fff;border-radius:10px;padding:12px}
+.example-card img{width:100%;height:160px;object-fit:cover;border-radius:8px;display:block}
+.example-card .caption{margin-top:10px;color:#0b2440;font-weight:700;font-size:13px}
+.example-card .view-btn{display:inline-block;margin-top:12px;padding:10px 18px;border-radius:22px;background:linear-gradient(180deg,#234f9b,#2f6fb7);color:#fff;border:none;cursor:pointer;box-shadow:0 6px 16px rgba(45,70,130,0.45)}
+.gallery-content .grid{grid-template-columns:repeat(2,1fr);gap:28px}
+
+@media (max-width:900px){
+  .gallery-content .grid{grid-template-columns:repeat(2,1fr)}
+  .example-card img{height:120px}
+}
