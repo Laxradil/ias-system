@@ -1,22 +1,31 @@
 document.addEventListener('DOMContentLoaded', function(){
   
-  // ===== 1. SCROLL ANIMATION OBSERVER =====
+  // ===== 1. TRAM ANIMATION OBSERVER =====
   const observerOptions = {
-    threshold: 0.1, 
+    threshold: 0.1, // Trigger when 10% visible
     rootMargin: "0px"
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Animate once
+        // TRAM ANIMATION LOGIC:
+        // We define the transition properties here.
+        tram(entry.target)
+          .add('opacity 800ms ease-out')
+          .add('transform 800ms ease-out-quint') // Smooth easing
+          .start({ opacity: 1, y: 0 }); // Animate to visible and original Y position
+        
+        observer.unobserve(entry.target); // Run once
       }
     });
   }, observerOptions);
 
   function observeItems() {
+    // Select all items that should animate
     document.querySelectorAll('.pop-on-scroll').forEach(el => {
+      // Ensure Tram is initialized on them (optional, but good practice)
+      tram(el);
       observer.observe(el);
     });
   }
@@ -91,8 +100,15 @@ document.addEventListener('DOMContentLoaded', function(){
         // Retrigger animations for newly shown items
         if(match) {
           p.querySelectorAll('.pop-on-scroll').forEach(el => {
-            el.classList.remove('visible');
-            setTimeout(()=> el.classList.add('visible'), 50);
+            // Reset state for Tram animation
+            tram(el).set({ opacity: 0, y: 50 });
+            // Small delay to allow reset to take effect before animating in
+            setTimeout(() => {
+                 tram(el)
+                  .add('opacity 600ms ease-out')
+                  .add('transform 600ms ease-out-quint')
+                  .start({ opacity: 1, y: 0 });
+            }, 50);
           });
         }
       });
@@ -142,30 +158,4 @@ document.addEventListener('DOMContentLoaded', function(){
   window.addEventListener('click', (e) => {
     if (e.target === modal) modal.classList.remove('active');
   });
-
-  // ===== 5. LOGO CONTROLS =====
-  const logoMappings = [
-    {id: 'site-logo', varW: '--site-logo-width', varH: '--site-logo-height'},
-    {id: 'hero-logo', varW: '--hero-logo-width', varH: '--hero-logo-height'}
-  ];
-  
-  function setCssVar(name, value){ if(value) document.documentElement.style.setProperty(name, value); }
-  
-  logoMappings.forEach(m=>{
-    const img = document.getElementById(m.id);
-    if(img){
-      const dw = img.getAttribute('data-width');
-      const dh = img.getAttribute('data-height');
-      if(dw) setCssVar(m.varW, dw.match(/^\d+$/) ? dw+'px' : dw);
-      if(dh) setCssVar(m.varH, dh.match(/^\d+$/) ? dh+'px' : dh);
-    }
-  });
-
-  const lcToggle = document.getElementById('lc-toggle');
-  const lcPanel = document.querySelector('.logo-controls');
-  if(lcToggle){
-    lcToggle.addEventListener('click', ()=>{
-      lcPanel.classList.toggle('collapsed');
-    });
-  }
 });
