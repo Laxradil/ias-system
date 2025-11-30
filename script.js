@@ -259,4 +259,43 @@ document.addEventListener('DOMContentLoaded', function(){
     scrollObserver.observe(section);
   });
 
+  // ===== 7. REFERENCES & CREDITS TABS =====
+  const refTabs = document.querySelectorAll('.ref-tab');
+  const refPanels = document.querySelectorAll('.ref-panel');
+
+  refTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // 1. Remove active class from all tabs
+      refTabs.forEach(t => t.classList.remove('active'));
+      // 2. Add active class to clicked tab
+      tab.classList.add('active');
+
+      // 3. Hide all panels
+      refPanels.forEach(panel => panel.classList.remove('active'));
+      
+      // 4. Show the target panel
+      const targetId = tab.getAttribute('data-target');
+      document.getElementById(targetId).classList.add('active');
+    });
+  });
+  
+  // ===== 8. SMART NAVIGATION (Auto-switch tabs) =====
+  const navCredits = document.getElementById('nav-credits');
+  const navRefs = document.getElementById('nav-refs');
+  
+  // When "CREDITS" nav is clicked -> Switch to Credits Tab
+  if(navCredits){
+    navCredits.addEventListener('click', () => {
+      const creditsTabBtn = document.querySelector('.ref-tab[data-target="cred-content"]');
+      if(creditsTabBtn) creditsTabBtn.click();
+    });
+  }
+
+  // When "REFERENCES" nav is clicked -> Switch to References Tab
+  if(navRefs){
+    navRefs.addEventListener('click', () => {
+      const refTabBtn = document.querySelector('.ref-tab[data-target="ref-content"]');
+      if(refTabBtn) refTabBtn.click();
+    });
+  }
 });
