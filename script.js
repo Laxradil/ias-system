@@ -304,4 +304,65 @@ document.addEventListener('DOMContentLoaded', function(){
       showCategory(valid);
     }catch(e){ showCategory('0'); }
   })();
+
+// 1. Get elements
+const modal = document.getElementById('details-modal');
+const modalImg = document.getElementById('modal-img');
+const modalTitle = document.getElementById('modal-title');
+const modalDesc = document.getElementById('modal-desc');
+const modalScamdetailsSection = document.getElementById('modal-scamdetails-section');
+const modalScamdetails = document.getElementById('modal-scamdetails');
+const closeBtn = document.getElementById('close-modal');
+
+// 2. Add click event to all "VIEW DETAILS" buttons
+document.querySelectorAll('.view-btn').forEach(button => {
+  button.addEventListener('click', (e) => {
+    // Find the card that contains this button
+    const card = e.target.closest('.example-card');
+    
+    // Get data from the card
+    const imgSrc = card.querySelector('img').src;
+    const titleText = card.querySelector('.caption').innerText;
+    const description = button.getAttribute('data-desc');
+    const scamdetails = button.getAttribute('data-scamdetails');
+    
+    // Set the modal content
+    modalImg.src = imgSrc;
+    modalTitle.innerText = titleText;
+    modalDesc.innerText = description ? description : "No detailed explanation provided for this example yet.";
+    
+    // Handle scam details section
+    if(scamdetails){
+      modalScamdetails.innerHTML = scamdetails;
+      modalScamdetailsSection.style.display = 'block';
+    } else {
+      modalScamdetailsSection.style.display = 'none';
+    }
+    
+    // Show the modal
+    modal.classList.add('active');
+  });
+});
+
+// 3. Close Modal Logic
+
+// Close when clicking the 'X' button
+closeBtn.addEventListener('click', () => {
+  modal.classList.remove('active');
+});
+
+// Close if clicking anywhere on the transparent modal backdrop (the area outside the glass container)
+window.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('active');
+  }
+});
+
+// Optional: Close on ESC key press
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    modal.classList.remove('active');
+  }
+});
+
 });

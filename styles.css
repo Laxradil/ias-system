@@ -188,3 +188,176 @@ button:focus-visible, .cta:focus-visible, .view-btn:focus-visible, .lc-toggle:fo
   outline: 3px solid rgba(0,209,255,0.14);
   outline-offset: 4px;
 }
+
+/* --- 1. Modal Background (Dark Backdrop) --- */
+.modal {
+  /* Hidden state */
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* Darker, semi-transparent background color (Black with 90% opacity) */
+  background-color: rgba(0, 0, 0, 0.9);
+  
+  /* Use flexbox to center the content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Smooth transition for the background fade */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Show the modal when it has the 'active' class */
+.modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* --- 2. Modal Content (Inner Frame) --- */
+
+/* The Outer Wrapper (Ensures proper centering and shadow) */
+.modal-content {
+  padding: 0; 
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  /* Reduced shadow intensity since the backdrop is darker */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+  
+  /* Smooth animation */
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  overflow: auto; /* Allow scrolling when content is taller than the modal */
+}
+
+/* Trigger content animation when active */
+.modal.active .modal-content {
+  transform: scale(1);
+}
+
+/* --- 3. The Glass Effect Container (.modal-glass) --- */
+
+/* This is the container we added in the previous step */
+.modal-glass {
+  /* Set the glass appearance */
+  background-color: rgba(255, 255, 255, 0.1); /* Very light transparent background */
+  border-radius: 12px;
+  padding: 30px; 
+  
+  /* THE FROSTED GLASS EFFECT */
+  backdrop-filter: blur(10px); /* Slightly increased blur for better contrast */
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* Optional: Light border to mimic glass edge against the dark background */
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  
+  width: 100%;
+  height: 100%;
+}
+
+/* --- 4. Content Colors for Visibility --- */
+
+/* Since the background is darker, ensure text inside the glass is bright */
+.modal-text h3 {
+  color: #fff; /* White text for contrast */
+}
+
+.modal-text p {
+  color: #f0f0f0; /* Light gray text */
+}
+
+.close-btn {
+  color: #ccc; /* Light gray X */
+}
+.close-btn:hover {
+  color: #fff; /* White hover */
+}
+
+/* --- 5. Modal Layout and Image Sizing (BALANCED FOR ALL IMAGE TYPES) --- */
+
+.modal-body {
+  display: flex;
+  flex-direction: column; /* Image on top, text below */
+  gap: 20px; 
+}
+
+/* Make the modal body scrollable when content exceeds available space */
+.modal-body {
+  max-height: calc(90vh - 120px);
+  overflow: auto;
+  padding-right: 8px; /* room for scrollbar without overlapping content */
+}
+
+.modal-image-container {
+  width: 100%; /* Default to full width of modal-body */
+  max-width: 500px; /* NEW: Max width for the image container on mobile/default */
+  margin: 0 auto 10px auto; /* Center and add margin */
+  flex-shrink: 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center image vertically if smaller than container */
+}
+
+.modal-image-container img {
+  /* Key Changes for flexible sizing */
+  max-width: 100%; /* Ensure image doesn't exceed container width */
+  max-height: 50vh; /* Control max height based on viewport */
+  width: auto; /* Allow image to determine its own width */
+  height: auto; /* Allow image to determine its own height */
+  
+  object-fit: contain; /* Essential: keeps entire image visible without cropping */
+  
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.modal-text {
+  flex-grow: 1;
+  color: #f0f0f0; /* ensure readable text inside the glass */
+}
+
+/* --- Responsive Layout Adjustment (Maintains column layout on desktop) --- */
+
+@media (min-width: 768px) {
+  .modal-body {
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+  
+  /* Modal content size remains as set previously */
+  .modal-content {
+    max-height: 90vh; 
+    max-width: 750px; 
+  }
+
+  /* Image container on desktop */
+  .modal-image-container {
+    max-width: 600px; /* NEW: Max width for the image container on desktop */
+    margin: 0 auto 20px auto; /* Center for desktop, add margin */
+    /* Increased max-height to handle tall images well, but won't force short ones to be huge */
+    max-height: 70vh; /* Balanced max height for desktop */
+    overflow-y: hidden; /* Only scroll if content pushes it, let img handle its own height */
+    padding-right: 0; /* No padding needed here for scrollbar unless actually scrolling */
+  }
+  
+  /* Text container will simply flow below the image */
+  .modal-text {
+    width: 100%; 
+  }
+
+  .modal-image-container img {
+    /* Key Changes for desktop images */
+    max-width: 100%; /* Image respects container width */
+    max-height: 100%; /* Image respects container height */
+    width: auto; /* Allow image to determine its own dimensions */
+    height: auto; 
+    
+    object-fit: contain; /* Crucial for all aspect ratios */
+  }
+}
