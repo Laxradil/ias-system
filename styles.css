@@ -1,4 +1,4 @@
-/* styles.css - One Page Version */
+/* styles.css - Single Page Scrolling Version */
 :root{
   --bg1:#0e0b2b;
   --bg2:#2d1b8f;
@@ -62,7 +62,7 @@ body{
 }
 
 /* HERO SECTION */
-.hero{display:flex;gap:40px;align-items:center;padding:80px 30px 120px;}
+.hero{display:flex;gap:40px;align-items:center;padding:80px 30px 120px; min-height: 90vh;}
 .hero-left{flex:0 0 360px;display:flex;flex-direction:column;align-items:center}
 .hero img#hero-logo{width:var(--hero-logo-width);height:var(--hero-logo-height);display:block;object-fit:contain}
 .hero-right{flex:1;color:#dfe9ff}
@@ -112,13 +112,13 @@ body{
   .gallery-hero-layout{flex-direction:column; text-align:center;}
   .grid{grid-template-columns:1fr;}
   .comparison{flex-direction:column;}
-  .main-nav ul{display:none;} /* Simple hide for mobile, or add hamburger later */
+  .main-nav ul{display:none;}
 }
 
 /* PARTICLES */
 #particles-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1;}
 
-/* MODAL & CONTROLS (Keep existing styles) */
+/* MODAL & CONTROLS */
 .modal {visibility: hidden; opacity: 0; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); display: flex; align-items: center; justify-content: center; transition: opacity 0.3s ease, visibility 0.3s ease;}
 .modal.active {visibility: visible; opacity: 1;}
 .modal-content {width: 90%; max-width: 800px; max-height: 90vh; overflow: auto; border-radius:12px;}
@@ -131,3 +131,27 @@ body{
 .logo-controls.collapsed .lc-panel{display:none;}
 .logo-controls input{background:#222; border:1px solid #444; color:#fff; padding:4px;}
 .lc-toggle{background:none; border:none; color:#fff; width:100%; text-align:left; cursor:pointer;}
+
+/* === ANIMATIONS === */
+
+/* Floating Logo */
+.floating-logo {
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(0, 209, 255, 0.4));
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Grid Pop-Up Animation */
+.pop-on-scroll {
+  opacity: 0;
+  transform: translateY(50px) scale(0.95);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.pop-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}

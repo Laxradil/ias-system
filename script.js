@@ -1,6 +1,28 @@
 document.addEventListener('DOMContentLoaded', function(){
   
-  // ===== 1. PARTICLE BACKGROUND =====
+  // ===== 1. SCROLL ANIMATION OBSERVER =====
+  const observerOptions = {
+    threshold: 0.1, 
+    rootMargin: "0px"
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Animate once
+      }
+    });
+  }, observerOptions);
+
+  function observeItems() {
+    document.querySelectorAll('.pop-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+  }
+  observeItems();
+
+  // ===== 2. PARTICLE BACKGROUND =====
   (function(){
     const canvas = document.getElementById('particles-canvas');
     if(!canvas) return;
@@ -45,41 +67,35 @@ document.addEventListener('DOMContentLoaded', function(){
 
     function animateParticles(){
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => { p.update(); p.draw(); });
-      // Draw connections
-      for(let i = 0; i < particles.length; i++){
-        for(let j = i + 1; j < particles.length; j++){
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if(dist < 150){
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(0, 209, 255, ${0.15 * (1 - dist / 150)})`;
-            ctx.lineWidth = 1;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
       requestAnimationFrame(animateParticles);
     }
     initParticles();
     animateParticles();
   })();
 
-  // ===== 2. GALLERY SUB-CATEGORY TABS =====
-  // This logic is kept so the gallery doesn't become too long
+  // ===== 3. GALLERY SUB-CATEGORY FILTER =====
   (function(){
     const tabs = Array.from(document.querySelectorAll('.gallery-tabs .gtab'));
     const panels = Array.from(document.querySelectorAll('.gallery-content .category-panel'));
     
-    if(!tabs.length || !panels.length) return;
-
     function showCategory(idx){
       const s = String(idx);
       tabs.forEach(t => t.classList.toggle('active', String(t.dataset.catIndex) === s));
-      panels.forEach(p => p.classList.toggle('hidden', String(p.dataset.catIndex) !== s));
+      panels.forEach(p => {
+        const match = String(p.dataset.catIndex) === s;
+        p.classList.toggle('hidden', !match);
+        // Retrigger animations for newly shown items
+        if(match) {
+          p.querySelectorAll('.pop-on-scroll').forEach(el => {
+            el.classList.remove('visible');
+            setTimeout(()=> el.classList.add('visible'), 50);
+          });
+        }
+      });
     }
 
     tabs.forEach(tab => {
@@ -87,11 +103,9 @@ document.addEventListener('DOMContentLoaded', function(){
         showCategory(tab.dataset.catIndex || '0');
       });
     });
-    // Default to first category
-    showCategory('0');
   })();
 
-  // ===== 3. MODAL LOGIC =====
+  // ===== 4. MODAL LOGIC =====
   const modal = document.getElementById('details-modal');
   const closeBtn = document.getElementById('close-modal');
   const modalImg = document.getElementById('modal-img');
@@ -105,32 +119,31 @@ document.addEventListener('DOMContentLoaded', function(){
       const card = e.target.closest('.example-card');
       const imgSrc = card.querySelector('img').src;
       const titleText = card.querySelector('.caption').innerText;
+      const description = button.getAttribute('data-desc');
+      const scamdetails = button.getAttribute('data-scamdetails');
       
       modalImg.src = imgSrc;
       modalTitle.innerText = titleText;
-      modalDesc.innerText = button.getAttribute('data-desc') || "No description.";
+      modalDesc.innerText = description ? description : "No detailed explanation provided for this example yet.";
       
-      const details = button.getAttribute('data-scamdetails');
-      if(details){
-        modalScamdetails.innerHTML = details;
+      if(scamdetails){
+        modalScamdetails.innerHTML = scamdetails;
         modalScamdetailsSection.style.display = 'block';
       } else {
         modalScamdetailsSection.style.display = 'none';
       }
-      
       modal.classList.add('active');
     });
   });
 
   if(closeBtn){
     closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-    window.addEventListener('click', (e) => {
-      if(e.target === modal) modal.classList.remove('active');
-    });
   }
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('active');
+  });
 
-  // ===== 4. LOGO SIZING LOGIC =====
-  // (Retained from original script for logo control panel)
+  // ===== 5. LOGO CONTROLS =====
   const logoMappings = [
     {id: 'site-logo', varW: '--site-logo-width', varH: '--site-logo-height'},
     {id: 'hero-logo', varW: '--hero-logo-width', varH: '--hero-logo-height'}
@@ -148,7 +161,6 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   });
 
-  // Simple Controls Toggle
   const lcToggle = document.getElementById('lc-toggle');
   const lcPanel = document.querySelector('.logo-controls');
   if(lcToggle){
