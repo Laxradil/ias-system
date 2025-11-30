@@ -163,3 +163,28 @@ body{
   .gallery-content .grid{grid-template-columns:repeat(2,1fr)}
   .example-card img{height:120px}
 }
+
+/* Button hover "pop" animation - applies to primary links and native buttons */
+button, .cta, .view-btn, .lc-toggle, .logo-controls button{
+  transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms ease, filter 220ms ease;
+  will-change: transform, box-shadow;
+}
+
+/* Hover state: lift and slightly scale for a pop effect */
+button:hover, .cta:hover, .view-btn:hover, .lc-toggle:hover, .logo-controls button:hover{
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 18px 36px rgba(5,12,36,0.45);
+  filter: brightness(1.03);
+}
+
+/* Active (press) state: quickly depress */
+button:active, .cta:active, .view-btn:active, .lc-toggle:active, .logo-controls button:active{
+  transform: translateY(-2px) scale(0.99);
+  transition-duration: 120ms;
+}
+
+/* Focus-visible for keyboard users: keep accessibility while matching animation */
+button:focus-visible, .cta:focus-visible, .view-btn:focus-visible, .lc-toggle:focus-visible, .logo-controls button:focus-visible{
+  outline: 3px solid rgba(0,209,255,0.14);
+  outline-offset: 4px;
+}
