@@ -87,6 +87,20 @@ body{
   .logo-controls{right:12px;left:12px;width:auto}
 }
 
+/* Particles canvas styling: full-screen, non-interactive, sits behind UI */
+#particles-canvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:0;
+  display:block;
+}
+
+/* Ensure main content stacks above the canvas */
+.site-header, main, .logo-controls, .container{position:relative;z-index:1}
+
 /* gallery artwork styles */
 .gallery-art{position:relative;display:block}
 .gallery-art img#gallery-image{width:var(--gallery-image-width);height:var(--gallery-image-height);object-fit:cover;border-radius:8px;display:block}
