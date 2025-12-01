@@ -32,8 +32,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
   
-
-  function animateNavLetters(){
+ function animateNavLetters(){
     const navItems = document.querySelectorAll('.main-nav .nav-item');
     navItems.forEach(item => {
       const text = item.textContent;
@@ -42,13 +41,21 @@ document.addEventListener('DOMContentLoaded', function(){
       // Wrap each character (including spaces) in a span
       text.split('').forEach((char) => {
         const span = document.createElement('span');
-        span.textContent = char;
+        
+        // FIX: If the character is a space, use a non-breaking space code
+        if (char === ' ') {
+          span.textContent = '\u00A0'; 
+        } else {
+          span.textContent = char;
+        }
+        
         item.appendChild(span);
       });
       
       item.classList.add('letter-animated');
     });
   }
+  
   animateNavLetters();
   
   // ===== SCROLL PROGRESS BAR =====
