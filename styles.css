@@ -834,6 +834,21 @@ body {
 }
 .link-num { color: #8b949e; margin-right: 10px; }
 
+/* References grid/cards */
+.ref-grid{
+  padding: 8px 12px;
+}
+.ref-card{
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 12px 14px;
+  border-radius: 8px;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.ref-card a{color:var(--accent1);text-decoration:none;font-weight:600}
+.ref-card .meta{color:var(--muted);font-size:12px;margin-top:6px}
+.ref-card:hover{transform:translateY(-6px);box-shadow:0 8px 20px rgba(2,6,23,0.6)}
+
 /* --- CREDITS STYLE (Team) --- */
 .credits-container {
   max-width: 900px;
@@ -897,6 +912,59 @@ body {
 }
 .footer-logo-small img { width: 30px; height: auto; }
 
+/* Footer / credits styling (centered compact footer) */
+.credits-container .credits-bottom-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  margin-top: 28px;
+}
+.credits-container .footer-logo-small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px; /* more breathing room between logo and brand */
+  margin-bottom: 6px;
+  opacity: 1;
+}
+.footer-logo-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  display: block;
+}
+.footer-brand {
+  color: var(--accent1);
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 18px;
+}
+.credits-line {
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.3;
+  max-width: 920px;
+  padding: 0 12px;
+}
+.credits-line .team-tag {
+  display: inline-block;
+  margin-left: 10px;
+  color: #c9d6ff;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .footer-logo-img { width: 52px; height: 52px; }
+  .footer-brand { font-size: 16px; }
+  .credits-line { font-size: 13px; padding: 0 14px; }
+}
+
 /* =========================================
    SEPARATED CREDITS SECTION STYLES
    ========================================= */
@@ -923,5 +991,506 @@ body {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
+}
+
+/* --- SEARCH BAR --- */
+.search-container {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  position: relative;
+}
+.search-container input {
+  width: 100%;
+  padding: 16px 20px;
+  padding-left: 50px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 209, 255, 0.3);
+  background: rgba(10, 15, 30, 0.6);
+  backdrop-filter: blur(5px);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.search-container input:focus {
+  border-color: #00d1ff;
+  box-shadow: 0 0 15px rgba(0, 209, 255, 0.3);
+  background: rgba(10, 15, 30, 0.9);
+}
+.search-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+}
+
+/* --- SOURCE GRID --- */
+.source-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.source-card {
+  position: relative;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+  border-radius: 12px;
+  padding: 1px; /* Gap for the glow to show through */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+  overflow: hidden;
+}
+
+/* Inner content */
+.card-content {
+  background: #0d1117; /* Dark background */
+  border-radius: 11px; /* 1px less than parent */
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover State: Levitation + Border color */
+.source-card:hover {
+  transform: translateY(-5px); /* Gentle float */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  border-color: rgba(0, 209, 255, 0.3);
+}
+
+/* Icons */
+.source-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+.source-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* Text */
+.source-info h4 {
+  margin: 0;
+  color: #e9eef8;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.source-domain {
+  font-size: 0.75rem;
+  color: #00d1ff;
+  font-family: monospace;
+  opacity: 0.8;
+}
+
+/* Arrow */
+.external-arrow {
+  margin-left: auto;
+  color: #555;
+  transition: all 0.3s;
+  transform: translateX(0);
+}
+.source-card:hover .external-arrow {
+  color: #00d1ff;
+  transform: translateX(3px) translateY(-3px);
+}
+
+/* --- SPOTLIGHT EFFECT --- */
+.spotlight-glow {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  /* The magic gradient */
+  background: radial-gradient(
+    600px circle at var(--x) var(--y), 
+    rgba(0, 209, 255, 0.15), 
+    transparent 40%
+  );
+}
+
+.source-card:hover .spotlight-glow {
+  opacity: 1;
+}
+
+/* Hide filtered items */
+.source-card.hidden-item {
+  display: none;
+}
+
+/* =========================================
+   INTELLIGENCE DATABASE (CLEAN VERSION)
+   ========================================= */
+
+/* 1. Grid Layout Container */
+#references .source-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* 2. The Card Link - Remove Default Blue Links */
+#references a.source-card {
+  text-decoration: none !important;
+  color: #e9eef8 !important; /* Force white text */
+  display: block; /* Treat link as a block */
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1px; /* Gap for glow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+/* Hover Effect */
+#references a.source-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border-color: rgba(0, 209, 255, 0.4);
+}
+
+/* 3. Card Content Layout */
+#references .card-content {
+  background: #0d1117;
+  border-radius: 11px;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* 4. FIX THE GIANT ICONS */
+#references .source-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px; /* Force it to stay 48px */
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+#references .source-icon img {
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+}
+
+/* 5. Text Styling */
+#references .source-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden; /* Prevent text spill */
+}
+
+#references .source-info h4 {
+  margin: 0 0 4px 0;
+  color: #e9eef8;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+#references .source-domain {
+  font-size: 0.75rem;
+  color: #00d1ff;
+  font-family: monospace;
+  opacity: 0.8;
+}
+
+/* 6. Arrow */
+#references .external-arrow {
+  margin-left: auto;
+  color: #555;
+  font-weight: bold;
+}
+#references a.source-card:hover .external-arrow {
+  color: #00d1ff;
+}
+
+/* 7. Spotlight Effect */
+#references .spotlight-glow {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: radial-gradient(
+    400px circle at var(--x, 50%) var(--y, 50%), 
+    rgba(0, 209, 255, 0.15), 
+    transparent 40%
+  );
+}
+#references a.source-card:hover .spotlight-glow {
+  opacity: 1;
+}
+/* =========================================
+   STYLE: HORIZONTAL PORTAL CARDS
+   ========================================= */
+
+/* 1. FORCE REMOVAL OF BLUE LINKS */
+#references a,
+.portal-card,
+.portal-card:visited,
+.portal-card:active,
+.portal-card:hover {
+  text-decoration: none !important;
+  color: #ffffff !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+/* 2. The Container */
+.portal-grid {
+  display: grid;
+  /* Auto-fill creates as many columns as fit */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 3. The Square Card - NOW HORIZONTAL ALIGNMENT */
+.portal-card {
+  display: flex;
+  flex-direction: row; /* Side-by-side layout */
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Center the group horizontally */
+  gap: 15px; /* Space between icon and text */
+  
+  aspect-ratio: 2.5 / 1; /* More rectangular now to fit text, or use 1/1 if you prefer square */
+  min-height: 100px;
+  
+  background-color: #050505; /* Deep Black */
+  border: 1px solid #1a1a1a;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  padding: 15px;
+}
+
+/* 4. Hover Effects */
+.portal-card:hover {
+  transform: translateY(-5px);
+  border-color: #ffffff; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  background-color: #0a0a0a;
+  z-index: 10;
+}
+
+/* 5. The Icon Circle - SMALLER SIZE */
+.portal-icon {
+  width: 48px;  /* Reduced from 70px */
+  height: 48px; /* Reduced from 70px */
+  min-width: 48px; /* Prevent squishing */
+  background: #111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #222;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.portal-card:hover .portal-icon {
+  transform: scale(1.1);
+  background: #fff; /* Flash white */
+}
+
+.portal-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(3); /* Make logo white */
+  transition: filter 0.3s ease;
+}
+
+.portal-card:hover .portal-icon img {
+  filter: none; /* Restore color on hover */
+}
+
+/* 6. Text Wrapper */
+.portal-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left; /* Left align text block */
+}
+
+/* 7. Typography */
+.portal-text {
+  color: #fff !important; 
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.portal-sub {
+  color: #555 !important; 
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.portal-card:hover .portal-sub {
+  color: #888 !important; 
+}
+
+/* 8. Responsive Fixes */
+@media (max-width: 600px) {
+  .portal-grid {
+    grid-template-columns: 1fr; /* Full width on mobile */
+  }
+}
+
+/* =========================================
+   FIXED & CENTERED PORTAL GRID
+   ========================================= */
+
+/* 1. RESET LINKS: Kill blue text and underlines */
+#references a,
+#references a:visited,
+#references a:hover,
+#references a:active {
+  text-decoration: none !important;
+  color: #ffffff !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* 2. CENTER THE GRID CONTAINER */
+.portal-grid {
+  display: flex; /* Using Flexbox for easier centering */
+  flex-wrap: wrap; /* Allow items to wrap */
+  justify-content: center; /* CENTER ITEMS HORIZONTALLY */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto; /* CENTER THE CONTAINER ITSELF */
+  padding: 0 20px;
+}
+
+/* 3. CARD STYLE */
+.portal-card {
+  display: flex;
+  flex-direction: row; /* Side-by-side icon/text */
+  align-items: center;
+  justify-content: center; /* Center content inside card */
+  gap: 15px;
+  
+  width: 260px; /* Fixed width ensures uniform look */
+  height: 90px;
+  
+  background-color: #050505;
+  border: 1px solid #1a1a1a;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  padding: 0 20px; /* Inner spacing */
+}
+
+/* 4. HOVER EFFECTS */
+.portal-card:hover {
+  transform: translateY(-5px);
+  border-color: #ffffff;
+  background-color: #0a0a0a;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  z-index: 10;
+}
+
+/* 5. ICON STYLING */
+.portal-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px; /* Prevent shrinking */
+  background: #111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #222;
+}
+
+.portal-icon img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(3); /* White logo */
+  transition: filter 0.3s ease;
+  margin: 0;
+}
+
+.portal-card:hover .portal-icon img {
+  filter: none; /* Color on hover */
+}
+
+/* 6. TEXT STYLING */
+.portal-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left; /* Left align text block */
+}
+
+.portal-text {
+  color: #fff !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.portal-sub {
+  color: #555 !important;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.portal-card:hover .portal-sub {
+  color: #888 !important;
 }
 }
