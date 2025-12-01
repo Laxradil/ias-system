@@ -277,7 +277,7 @@
       </div>
     </section>
 
-    <section id="comparison" class="section-block container" data-bgcolor="#061f1a">
+   <section id="comparison" class="section-block container" data-bgcolor="#061f1a">
       <div class="comp-header text-center pop-on-scroll">
         <h2 class="section-title">AUTHENTIC <span class="vs-badge">VS</span> DECEPTIVE</h2>
         <p class="comp-subtitle">The side-by-side guide to spotting red flags instantly.</p>
@@ -286,12 +286,12 @@
       <div class="comp-container">
         <div class="comp-card legit pop-on-scroll">
           <div class="card-status">
-            <div class="icon-circle check">✓</div>
+            <div class="icon-circle check" data-tooltip="Verified Safe: This communication pattern matches official security standards.">✓</div>
             <span>AUTHENTIC</span>
           </div>
           <div class="mock-email">
-            <div class="row"><strong>From:</strong> careers@mjcompany.com <span class="safe-tag">✔ Verified Domain</span></div>
-            <div class="row"><strong>To:</strong> Sarah Jenkins <span class="safe-tag">✔ Personal</span></div>
+            <div class="row"><strong>From:</strong> careers@mjcompany.com <span class="safe-tag" data-tooltip="Official Domain: The email address matches the company website exactly.">✔ Verified Domain</span></div>
+            <div class="row"><strong>To:</strong> Sarah Jenkins <span class="safe-tag" data-tooltip="Personalized: The sender knows your real name, not just 'Customer'.">✔ Personal</span></div>
             <div class="body">
               <p>Dear Sarah,</p>
               <p>We received your application. Please review your interview details in our secure portal.</p>
@@ -299,19 +299,19 @@
               <div class="url-preview">https://secure.mjcompany.com/portal</div>
             </div>
           </div>
-          <div class="hover-tip">Hover over elements to see why this is safe!</div>
+          <div class="hover-tip">Hover over the green checks to see why this is safe!</div>
         </div>
 
         <div class="comp-card scam pop-on-scroll">
           <div class="card-status">
-            <div class="icon-circle cross">✕</div>
+            <div class="icon-circle cross" data-tooltip="Scam Alert: This email contains common phishing traits. Proceed with caution.">✕</div>
             <span>SCAM</span>
           </div>
           <div class="mock-email">
-            <div class="row warning-text" title="Suspicious domain!"><strong>From:</strong> security@bumzee.in <span class="danger-tag">⚠ Suspicious</span></div>
-            <div class="row" title="Generic greeting!"><strong>To:</strong> Dear Customer <span class="danger-tag">⚠ Generic</span></div>
+            <div class="row warning-text"><strong>From:</strong> security@bumzee.in <span class="danger-tag" data-tooltip="Suspicious Domain: 'bumzee.in' is likely a personal or compromised account, not a company.">⚠ Suspicious</span></div>
+            <div class="row"><strong>To:</strong> Dear Customer <span class="danger-tag" data-tooltip="Generic Greeting: Scammers often don't know your name and use generic titles.">⚠ Generic</span></div>
             <div class="body">
-              <p class="urgent" title="Urgency tactic!">⚠️ FINAL NOTICE: ACCOUNT SUSPENDED</p>
+              <p class="urgent" data-tooltip="Fear Tactic: Scammers create fake urgency to make you panic and click without thinking.">⚠️ FINAL NOTICE: ACCOUNT SUSPENDED</p>
               <p>We detected unusual activity! Verify your details immediately or lose access forever.</p>
               <div class="input-group">
                 <input type="text" placeholder="Credit Card Number" disabled class="phish-input">
@@ -320,7 +320,7 @@
               <button class="danger-btn" title="Malicious Link!">Verify Now</button>
             </div>
           </div>
-          <div class="hover-tip">Hover over red text to see the danger signs!</div>
+          <div class="hover-tip">Hover over the red marks to see the danger signs!</div>
         </div>
       </div>
 
@@ -415,7 +415,6 @@
         </div>
       </div>
     </section>
-
     <!-- =========================================
      REPLACE YOUR EXISTING TIPS SECTION
      Find: <section id="tips" ...>
@@ -637,139 +636,161 @@
     <div class="terminal-body custom-scrollbar">
       <div class="ref-grid">
         
-        <div class="ref-card pop-on-scroll">
+        <a href="https://www.facebook.com/photo/?fbid=3357767617772716" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=facebook.com" alt="">
-            <a href="https://www.facebook.com/photo/?fbid=3357767617772716" target="_blank" rel="noopener noreferrer">BDO Phishing Example</a>
+            <span class="ref-title">BDO Phishing Example</span>
           </div>
           <div class="meta">facebook.com • Feb 2023</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://blogs.npav.net/blogs/post/1234u1234" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=blogs.npav.net" alt="">
-            <a href="https://blogs.npav.net/blogs/post/1234u1234" target="_blank" rel="noopener noreferrer">Union Bank Scam Alert</a>
+            <span class="ref-title">Union Bank Scam Alert</span>
           </div>
           <div class="meta">blogs.npav.net • Aug 2014</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://www.bankcom.com.ph/advisory/" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=bankcom.com.ph" alt="">
-            <a href="https://www.bankcom.com.ph/advisory/" target="_blank" rel="noopener noreferrer">Bank of Commerce Advisory</a>
+            <span class="ref-title">Bank of Commerce Advisory</span>
           </div>
           <div class="meta">bankcom.com.ph • Jul 2025</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://www.facebook.com/landbankofficial/" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=facebook.com" alt="">
-            <a href="https://www.facebook.com/landbankofficial/" target="_blank" rel="noopener noreferrer">Landbank Official Warnings</a>
+            <span class="ref-title">Landbank Official Warnings</span>
           </div>
           <div class="meta">facebook.com • Mar 2023</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://www.cyberghostvpn.com/privacyhub/online-prize-scams/" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=cyberghostvpn.com" alt="">
-            <a href="https://www.cyberghostvpn.com/privacyhub/online-prize-scams/" target="_blank" rel="noopener noreferrer">Online Prize Scams Guide</a>
+            <span class="ref-title">Online Prize Scams Guide</span>
           </div>
           <div class="meta">cyberghostvpn.com • Jan 2025</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://dicts.mak.ac.ug/articles/beware-congratulations" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=dicts.mak.ac.ug" alt="">
-            <a href="https://dicts.mak.ac.ug/articles/beware-congratulations" target="_blank" rel="noopener noreferrer">iPhone Gift Card Scam Warning</a>
+            <span class="ref-title">iPhone Gift Card Scam Warning</span>
           </div>
           <div class="meta">dicts.mak.ac.ug</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://africacheck.org/fact-checks/meta-programme-fact-checks" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=africacheck.org" alt="">
-            <a href="https://africacheck.org/fact-checks/meta-programme-fact-checks" target="_blank" rel="noopener noreferrer">Albany Bakeries Scam Fact-Check</a>
+            <span class="ref-title">Albany Bakeries Scam Fact-Check</span>
           </div>
           <div class="meta">africacheck.org • Nov 2025</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://ssfcu.org/account-services/fraud-awareness" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=ssfcu.org" alt="">
-            <a href="https://ssfcu.org/account-services/fraud-awareness" target="_blank" rel="noopener noreferrer">Giveaway Fraud Awareness</a>
+            <span class="ref-title">Giveaway Fraud Awareness</span>
           </div>
           <div class="meta">ssfcu.org • 2025</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://winonait.com/blog/recognizing-phishing-emails" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=winonait.com" alt="">
-            <a href="https://winonait.com/blog/recognizing-phishing-emails" target="_blank" rel="noopener noreferrer">Password Expiration Scams</a>
+            <span class="ref-title">Password Expiration Scams</span>
           </div>
           <div class="meta">winonait.com • 2023</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://informationsecurity.mcmaster.ca/phishing-email" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=informationsecurity.mcmaster.ca" alt="">
-            <a href="https://informationsecurity.mcmaster.ca/phishing-email" target="_blank" rel="noopener noreferrer">Office 365 Phishing Alert</a>
+            <span class="ref-title">Office 365 Phishing Alert</span>
           </div>
           <div class="meta">informationsecurity.mcmaster.ca • Apr 2023</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://ist.mit.edu/news/outlook-phishing" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=ist.mit.edu" alt="">
-            <a href="https://ist.mit.edu/news/outlook-phishing" target="_blank" rel="noopener noreferrer">MIT: Outlook Phishing</a>
+            <span class="ref-title">MIT: Outlook Phishing</span>
           </div>
           <div class="meta">ist.mit.edu • Apr 2021</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://blog.bham.ac.uk/itsecurity/2025/01/27/" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=blog.bham.ac.uk" alt="">
-            <a href="https://blog.bham.ac.uk/itsecurity/2025/01/27/" target="_blank" rel="noopener noreferrer">Simulated Phishing Email Study</a>
+            <span class="ref-title">Simulated Phishing Email Study</span>
           </div>
           <div class="meta">blog.bham.ac.uk • Jan 2025</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://www.facebook.com/pia1launion/" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=facebook.com" alt="">
-            <a href="https://www.facebook.com/pia1launion/" target="_blank" rel="noopener noreferrer">PIA: Scholarship Scams</a>
+            <span class="ref-title">PIA: Scholarship Scams</span>
           </div>
           <div class="meta">facebook.com • Jan 2025</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://uit.stanford.edu/news/phishing-scams" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=uit.stanford.edu" alt="">
-            <a href="https://uit.stanford.edu/news/phishing-scams" target="_blank" rel="noopener noreferrer">Stanford: Student Phishing Targets</a>
+            <span class="ref-title">Stanford: Student Phishing Targets</span>
           </div>
           <div class="meta">uit.stanford.edu • Mar 2023</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://security.georgetown.edu/phishing-examples/" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=security.georgetown.edu" alt="">
-            <a href="https://security.georgetown.edu/phishing-examples/" target="_blank" rel="noopener noreferrer">Georgetown: Job Offer Scams</a>
+            <span class="ref-title">Georgetown: Job Offer Scams</span>
           </div>
           <div class="meta">security.georgetown.edu • Jul 2017</div>
-        </div>
+        </a>
 
-        <div class="ref-card pop-on-scroll">
+        <a href="https://www.profesoraanita.com/2017/01/" target="_blank" rel="noopener noreferrer" class="ref-card pop-on-scroll">
           <div class="ref-head">
             <img class="ref-favicon" src="https://www.google.com/s2/favicons?domain=profesoraanita.com" alt="">
-            <a href="https://www.profesoraanita.com/2017/01/" target="_blank" rel="noopener noreferrer">Marketing Scholarship Scams</a>
+            <span class="ref-title">Marketing Scholarship Scams</span>
           </div>
           <div class="meta">profesoraanita.com • Jan 2017</div>
-        </div>
+        </a>
 
       </div>
     </div>
   </div>
 </section>
 
+<section id="credits" class="section-block container" data-bgcolor="#0a0510">
+  <div class="credits-container pop-on-scroll">
+    
+    <div class="team-header">
+      <h3>DEVELOPMENT TEAM</h3>
+      <span class="team-tag">2G-BSCS</span>
+    </div>
+    
+    <div class="credits-bottom-area">
+      <div class="footer-logo-small">
+        <img src="logo without logo.png" alt="The Digital Shield Logo" class="footer-logo-img" width="80" height="80">
+        <span class="footer-brand">THE DIGITAL SHIELD</span>
+      </div>
+      
+      <p class="credits-line">
+        AGNE, BRIONES, CONDA, DY S., DELOS REYES, HABABAG, MANGAMPO &amp; MATAMOROSA
+        <span class="team-tag">2G-BSCS</span>
+      </p>
+    </div>
+    
+  </div>
+</section>
 
 <!-- =========================================
      REPLACE YOUR EXISTING CREDITS SECTION
