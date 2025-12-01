@@ -992,4 +992,47 @@ body {
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+/* =========================================
+   MODERN & FUN HYPERLINKS
+   ========================================= */
+
+/* Target links in the Reference cards and the Modal details */
+.ref-card a,
+#modal-scamdetails a {
+  text-decoration: none !important; /* Removes the old blue underline */
+  color: #00d1ff !important;        /* Enforces your Cyber Cyan color */
+  font-weight: 700;
+  padding: 4px 8px;                 /* Adds breathing room */
+  border-radius: 6px;               /* Smooth rounded corners */
+  
+  /* Modern Glassy Look */
+  background: rgba(0, 209, 255, 0.08); 
+  border: 1px solid rgba(0, 209, 255, 0.2);
+  
+  /* The "Fun" setup */
+  display: inline-block; 
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy animation */
+}
+
+/* Hover Effect: The "Neon Pop" */
+.ref-card a:hover,
+#modal-scamdetails a:hover {
+  background: #00d1ff;              /* Fills with solid Cyan */
+  color: #080a1a !important;        /* Changes text to dark for contrast */
+  border-color: #00d1ff;
+  
+  /* Fun Movement */
+  transform: translateY(-3px) scale(1.05); /* Moves up and grows slightly */
+  
+  /* Glow Effect */
+  box-shadow: 0 10px 20px rgba(0, 209, 255, 0.4); 
+}
+
+/* Active Click Effect */
+.ref-card a:active,
+#modal-scamdetails a:active {
+  transform: translateY(-1px) scale(0.98); /* Squishes slightly when clicked */
+  box-shadow: 0 5px 10px rgba(0, 209, 255, 0.3);
+}
 }
