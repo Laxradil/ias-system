@@ -1,5 +1,66 @@
 document.addEventListener('DOMContentLoaded', function(){
   
+  // ===== CTA BUTTON RIPPLE EFFECT =====
+  const ctaButton = document.querySelector('.cta');
+  if(ctaButton){
+    ctaButton.addEventListener('click', function(e){
+      const rect = ctaButton.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const ripple = document.createElement('span');
+      ripple.style.position = 'absolute';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      ripple.style.width = '0';
+      ripple.style.height = '0';
+      ripple.style.borderRadius = '50%';
+      ripple.style.background = 'rgba(255, 255, 255, 0.5)';
+      ripple.style.pointerEvents = 'none';
+      ripple.style.transform = 'translate(-50%, -50%)';
+      
+      ctaButton.appendChild(ripple);
+      
+      // Animate ripple
+      ripple.animate([
+        { width: '0px', height: '0px', opacity: '1' },
+        { width: '300px', height: '300px', opacity: '0' }
+      ], {
+        duration: 600,
+        easing: 'ease-out'
+      }).onfinish = () => ripple.remove();
+    });
+  }
+  
+
+  function animateNavLetters(){
+    const navItems = document.querySelectorAll('.main-nav .nav-item');
+    navItems.forEach(item => {
+      const text = item.textContent;
+      item.textContent = ''; // Clear the text
+      
+      // Wrap each character (including spaces) in a span
+      text.split('').forEach((char) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        item.appendChild(span);
+      });
+      
+      item.classList.add('letter-animated');
+    });
+  }
+  animateNavLetters();
+  
+  // ===== SCROLL PROGRESS BAR =====
+  const progressBar = document.querySelector('.scroll-progress-bar');
+  if(progressBar){
+    window.addEventListener('scroll', function(){
+      const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (window.scrollY / windowHeight) * 100;
+      progressBar.style.width = scrolled + '%';
+    });
+  }
+  
   // ===== 1. SCROLL ANIMATION OBSERVER =====
   const observerOptions = {
     threshold: 0.1, 
