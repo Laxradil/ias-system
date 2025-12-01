@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>The Digital Shield</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Inline override for reference card links (HTML-only change) */
+    .ref-card a { color: #66b3ff !important; text-decoration: none; }
+    .ref-card a:hover { color: #66b3ff !important; opacity: 0.95; }
+    .ref-head { display: flex; align-items: center; gap: 8px; }
+    .ref-favicon { width: 16px; height: 16px; display: inline-block; }
+    .ref-card a:focus { outline: 2px solid rgba(102,179,255,0.35); outline-offset: 3px; border-radius: 4px; }
+  </style>
 </head>
 <body>
   <canvas id="particles-canvas" aria-hidden="true"></canvas>
