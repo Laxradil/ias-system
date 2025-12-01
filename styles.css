@@ -648,7 +648,8 @@ body {
   overflow: hidden;
 }
 
-/* Add glow effect on hover */
+.example-card::before {
+/* Add glow effect on hover - REMOVED RAINBOW */
 .example-card::before {
   content: '';
   position: absolute;
@@ -656,13 +657,13 @@ body {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, #00d1ff, #4b2bff, #ff0055, #00ff88);
+  background: linear-gradient(135deg, #00d1ff, #4b2bff);
   border-radius: 12px;
   opacity: 0;
   z-index: -1;
   filter: blur(15px);
   transition: opacity 0.4s ease;
-  animation: card-glow-rotate 3s linear infinite;
+}
 }
 
 @keyframes card-glow-rotate {
