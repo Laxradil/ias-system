@@ -627,3 +627,352 @@ body {
   .credits-container { padding: 40px 20px; border-radius: 30px; }
   .footer-logo-img { width: 60px; height: 60px; }
 }
+
+/* =========================================
+   ENHANCED INTERACTIVE STYLES
+   Add this to the END of your styles.css file
+   ========================================= */
+
+/* =========================================
+   ENHANCED GALLERY CARDS - INTERACTIVE
+   ========================================= */
+
+.example-card {
+  background: linear-gradient(180deg, #ffffff, #f7f9ff);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(5, 7, 20, 0.45);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add glow effect on hover */
+.example-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #00d1ff, #4b2bff, #ff0055, #00ff88);
+  border-radius: 12px;
+  opacity: 0;
+  z-index: -1;
+  filter: blur(15px);
+  transition: opacity 0.4s ease;
+  animation: card-glow-rotate 3s linear infinite;
+}
+
+@keyframes card-glow-rotate {
+  0% { filter: blur(15px) hue-rotate(0deg); }
+  100% { filter: blur(15px) hue-rotate(360deg); }
+}
+
+.example-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(5, 7, 20, 0.6);
+}
+
+.example-card:hover::before {
+  opacity: 0.8;
+}
+
+/* Card Inner Animation */
+.example-card .card-inner {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Image zoom on hover */
+.example-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.example-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Caption pop effect */
+.example-card .caption {
+  margin-top: 10px;
+  color: #0b2440;
+  font-weight: 700;
+  font-size: 13px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.example-card:hover .caption {
+  color: #00d1ff;
+  transform: scale(1.05);
+}
+
+/* Enhanced VIEW DETAILS Button */
+.view-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 24px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #234f9b, #2f6fb7);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 6px 20px rgba(45, 70, 130, 0.4);
+}
+
+/* Button shine effect */
+.view-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.view-btn:hover::before {
+  left: 100%;
+}
+
+.view-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 209, 255, 0.6);
+  background: linear-gradient(135deg, #00d1ff, #4b2bff);
+}
+
+.view-btn:active {
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   INTERACTIVE TEAM CREDITS
+   ========================================= */
+
+.credits-bottom-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Team Grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 25px;
+  width: 100%;
+  max-width: 900px;
+  margin: 30px 0;
+}
+
+/* Individual Team Member Card */
+.team-member {
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(0, 209, 255, 0.05));
+  border: 1px solid rgba(108, 92, 231, 0.3);
+  border-radius: 16px;
+  padding: 20px 15px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow effect */
+.team-member::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #6c5ce7, #00d1ff, #00ff88);
+  border-radius: 16px;
+  opacity: 0;
+  z-index: -1;
+  filter: blur(10px);
+  transition: opacity 0.4s ease;
+}
+
+.team-member:hover::before {
+  opacity: 0.7;
+  animation: team-glow-rotate 2s linear infinite;
+}
+
+@keyframes team-glow-rotate {
+  0% { filter: blur(10px) hue-rotate(0deg); }
+  100% { filter: blur(10px) hue-rotate(360deg); }
+}
+
+.team-member:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(108, 92, 231, 0.5);
+  border-color: #00d1ff;
+}
+
+/* Avatar Circle */
+.team-avatar {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #6c5ce7, #00d1ff);
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(108, 92, 231, 0.5);
+  transition: all 0.3s ease;
+}
+
+.team-member:hover .team-avatar {
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 209, 255, 0.7);
+}
+
+/* Member Name */
+.team-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #e9eef8;
+  margin: 8px 0 0 0;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.team-member:hover .team-name {
+  color: #00d1ff;
+  text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
+}
+
+/* Role Badge (optional) */
+.team-role {
+  font-size: 0.7rem;
+  color: #8b9bb4;
+  margin-top: 5px;
+  opacity: 0.8;
+}
+
+/* Footer Logo Enhancement */
+.footer-logo-small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+  animation: gentle-float 4s ease-in-out infinite;
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.footer-logo-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(0, 209, 255, 0.4));
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.footer-logo-small:hover .footer-logo-img {
+  transform: rotate(360deg) scale(1.15);
+  filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.6));
+}
+
+.footer-brand {
+  color: #00d1ff;
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.footer-logo-small:hover .footer-brand {
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.7);
+  color: #00ff88;
+}
+
+/* Credits Line */
+.credits-line {
+  color: #e9eef8;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 920px;
+  padding: 0 20px;
+  letter-spacing: 0.5px;
+}
+
+.credits-line .team-tag {
+  margin-left: 15px;
+  background: linear-gradient(90deg, rgba(108, 92, 231, 0.3), rgba(0, 209, 255, 0.3));
+  color: #c9d6ff;
+  border: 1px solid rgba(108, 92, 231, 0.5);
+  box-shadow: none;
+  animation: none;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.credits-line .team-tag:hover {
+  background: linear-gradient(90deg, #6c5ce7, #00d1ff);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+  }
+
+  .team-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .footer-logo-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .footer-brand {
+    font-size: 1.2rem;
+  }
+}
