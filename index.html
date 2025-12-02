@@ -24,6 +24,7 @@
           <li><a class="nav-item" href="#gallery">PHISHBAIT GALLERY</a></li>
           <li><a class="nav-item" href="#comparison">COMPARISON</a></li>
           <li><a class="nav-item" href="#tips">TIPS</a></li>
+          <li><a class="nav-item" href="#infographics">INFOGRAPHICS</a></li>
           <li><a class="nav-item" href="#references">REFERENCES</a></li>
           <li><a class="nav-item" id="nav-credits" href="#credits">CREDITS</a></li>
         </ul>
@@ -614,6 +615,35 @@
   </div>
 
 </section>
+
+<!-- =========================================
+     INFOGRAPHICS SECTION
+     ========================================= -->
+<section id="infographics" class="section-block container">
+  <div class="infographic-header pop-on-scroll">
+    <h2 class="section-title">INFO<span class="neon-text">GRAPHICS</span></h2>
+    <p class="infographic-subtitle">Visual guides to help you stay safe online. Click to view full size.</p>
+  </div>
+
+  <div class="infographic-grid">
+    <div class="infographic-card pop-on-scroll" onclick="openLightbox('IAS_Final_page-0001.jpg')">
+      <div class="infographic-thumbnail">
+        <img src="IAS_Final_page-0001.jpg" alt="Cybersecurity Infographic" loading="lazy">
+        <div class="infographic-overlay">
+          <span class="zoom-icon">🔍</span>
+          <span class="zoom-text">Click to enlarge</span>
+        </div>
+      </div>
+      <p class="infographic-caption">Cybersecurity Awareness Guide</p>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" class="lightbox-content" src="" alt="Full size infographic">
+</div>
 
 <!-- =========================================
      REPLACE YOUR EXISTING REFERENCES SECTION

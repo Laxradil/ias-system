@@ -1,5 +1,38 @@
 document.addEventListener('DOMContentLoaded', function(){
   
+  // ===== SECTION-BASED BACKGROUND COLOR CHANGE =====
+  // Colors: deep blue-purple → deep dark space
+  const sectionColors = {
+    'home': '#1a1a3e',           // Deep blue-purple (starting)
+    'gallery': '#161635',        // Darker blue-purple  
+    'comparison': '#12122c',     // Deep navy
+    'tips': '#0e0e24',           // Dark navy
+    'infographics': '#0a0a1c',   // Very dark blue
+    'references': '#060614',     // Near black blue
+    'credits': '#03030a'         // Deep space black
+  };
+  
+  const sections = document.querySelectorAll('section[id]');
+  
+  const colorObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.id;
+        const newColor = sectionColors[sectionId];
+        if (newColor) {
+          document.body.style.setProperty('--current-bg', newColor);
+        }
+      }
+    });
+  }, {
+    threshold: 0.3,
+    rootMargin: '-10% 0px -10% 0px'
+  });
+  
+  sections.forEach(section => {
+    colorObserver.observe(section);
+  });
+  
   // ===== CTA BUTTON RIPPLE EFFECT =====
   const ctaButton = document.querySelector('.cta');
   if(ctaButton){
@@ -307,7 +340,10 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 
-  // ===== 6. DYNAMIC BACKGROUND COLOR CHANGER =====
+  // ===== 6. DYNAMIC BACKGROUND - DISABLED FOR GRADIENT =====
+  // Background now uses CSS fixed gradient from purple to deep space
+  // Keeping observer for potential future use but not changing background
+  /*
   const sections = document.querySelectorAll('section[data-bgcolor]');
   
   const scrollObserver = new IntersectionObserver((entries) => {
@@ -326,6 +362,7 @@ document.addEventListener('DOMContentLoaded', function(){
   sections.forEach(section => {
     scrollObserver.observe(section);
   });
+  */
 
   // ===== 7. REFERENCES & CREDITS TABS =====
   const refTabs = document.querySelectorAll('.ref-tab');
@@ -368,4 +405,32 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
 
+});
+
+// ===== LIGHTBOX FUNCTIONS =====
+function openLightbox(imageSrc) {
+  const modal = document.getElementById('lightbox-modal');
+  const modalImg = document.getElementById('lightbox-img');
+  
+  if (modal && modalImg) {
+    modal.classList.add('active');
+    modalImg.src = imageSrc;
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+  }
+}
+
+function closeLightbox() {
+  const modal = document.getElementById('lightbox-modal');
+  
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+  }
+}
+
+// Close lightbox with Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeLightbox();
+  }
 });
