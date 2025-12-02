@@ -640,9 +640,17 @@
 </section>
 
 <!-- Lightbox Modal -->
-<div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox()">
+<div id="lightbox-modal" class="lightbox-modal">
   <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-  <img id="lightbox-img" class="lightbox-content" src="" alt="Full size infographic">
+  <div class="lightbox-controls">
+    <button class="zoom-btn" onclick="zoomOut(event)">−</button>
+    <span id="zoom-level">100%</span>
+    <button class="zoom-btn" onclick="zoomIn(event)">+</button>
+    <button class="zoom-btn zoom-reset" onclick="zoomReset(event)">Reset</button>
+  </div>
+  <div class="lightbox-wrapper" onclick="closeLightbox()">
+    <img id="lightbox-img" class="lightbox-content" src="" alt="Full size infographic" onclick="event.stopPropagation()">
+  </div>
 </div>
 
 <!-- =========================================

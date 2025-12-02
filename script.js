@@ -407,15 +407,56 @@ document.addEventListener('DOMContentLoaded', function(){
 
 });
 
-// ===== LIGHTBOX FUNCTIONS =====
+// ===== LIGHTBOX FUNCTIONS WITH ZOOM =====
+let currentZoom = 50;
+const zoomStep = 25;
+const minZoom = 25;
+const maxZoom = 100;
+
+function updateZoomDisplay() {
+  const zoomLabel = document.getElementById('zoom-level');
+  if (zoomLabel) {
+    zoomLabel.textContent = currentZoom + '%';
+  }
+  
+  const img = document.getElementById('lightbox-img');
+  if (img) {
+    img.style.transform = `scale(${currentZoom / 100})`;
+  }
+}
+
+function zoomIn(event) {
+  event.stopPropagation();
+  if (currentZoom < maxZoom) {
+    currentZoom += zoomStep;
+    updateZoomDisplay();
+  }
+}
+
+function zoomOut(event) {
+  event.stopPropagation();
+  if (currentZoom > minZoom) {
+    currentZoom -= zoomStep;
+    updateZoomDisplay();
+  }
+}
+
+function zoomReset(event) {
+  event.stopPropagation();
+  currentZoom = 50;
+  updateZoomDisplay();
+}
+
 function openLightbox(imageSrc) {
   const modal = document.getElementById('lightbox-modal');
   const modalImg = document.getElementById('lightbox-img');
   
   if (modal && modalImg) {
+    currentZoom = 50;
+    updateZoomDisplay();
     modal.classList.add('active');
     modalImg.src = imageSrc;
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
+    document.body.style.overflow = 'hidden';
   }
 }
 
@@ -424,7 +465,8 @@ function closeLightbox() {
   
   if (modal) {
     modal.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
+    document.body.style.overflow = '';
+    currentZoom = 100;
   }
 }
 
@@ -432,5 +474,15 @@ function closeLightbox() {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeLightbox();
+  }
+  // Keyboard zoom controls
+  if (document.getElementById('lightbox-modal')?.classList.contains('active')) {
+    if (e.key === '+' || e.key === '=') {
+      zoomIn(e);
+    } else if (e.key === '-') {
+      zoomOut(e);
+    } else if (e.key === '0') {
+      zoomReset(e);
+    }
   }
 });
