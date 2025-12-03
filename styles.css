@@ -1629,4 +1629,19 @@ body {
   .footer-brand {
     font-size: 1.2rem;
   }
+
+  /* Logout Button Styling */
+.logout-btn {
+  background: linear-gradient(135deg, #ff0055, #ff4444) !important;
+  padding: 8px 16px !important;
+  border-radius: 20px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(255, 0, 85, 0.3) !important;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #ff4444, #ff0055) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(255, 0, 85, 0.5) !important;
+}
 }

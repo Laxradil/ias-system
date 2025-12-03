@@ -486,3 +486,26 @@ document.addEventListener('keydown', function(e) {
     }
   }
 });
+
+// Logout functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const logoutBtn = document.getElementById('logout-btn');
+  
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Clear the session
+      sessionStorage.removeItem('digitalShieldUser');
+      
+      // Show confirmation animation
+      logoutBtn.textContent = '✓ Logged Out';
+      logoutBtn.style.background = 'linear-gradient(135deg, #00ff88, #00d1ff)';
+      
+      // Redirect after short delay
+      setTimeout(() => {
+        window.location.href = 'signup.html';
+      }, 800);
+    });
+  }
+});
